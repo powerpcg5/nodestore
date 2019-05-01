@@ -2,12 +2,13 @@
 --  nodestore/nodestore.sql
 --  nodestore.sql for _nodestore_ store inventory app using Node.js and MySQL
 --
---  2155--2311 Monday, 24 Nisan 5779 (29 April 2019) [EDT] {18015}
+--  2155 Monday, 24 Nisan 5779 (29 April 2019) [EDT] {18015}
 --
 --  University of Richmond Coding Boot Camp run by Trilogy Education Services
 --  Austin Kim
 --
 --  Modified:
+--    2339 Tuesday, 25 Nisan 5779 (30 April 2019) [EDT] {18016}
 -------------------------------------------------------------------------------
 
 DROP DATABASE IF EXISTS nodestoreDB;
@@ -21,7 +22,7 @@ CREATE TABLE products (
   --    45 is the 2-digit class number, and
   --    6789 is the 4-digit item number
   item_id         INTEGER(9)  NOT NULL,
-  product         VARCHAR(64)     NULL, --  Product name
+  product         VARCHAR(80)     NULL, --  Product name
   department      VARCHAR(64)     NULL, --  Department name
   price           DECIMAL(6,2)    NULL, --  Price (cost to customer) in U. S. $
   stock_quantity  INTEGER(6)      NULL, --  Quantity of product in stock
