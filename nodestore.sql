@@ -9,12 +9,15 @@
 --
 --  Modified:
 --    2339 Tuesday, 25 Nisan 5779 (30 April 2019) [EDT] {18016}
+--    0154 Wednesday, 26 Nisan 5779 (1 May 2019) [EDT] {18017}
 -------------------------------------------------------------------------------
 
 DROP DATABASE IF EXISTS nodestoreDB;
 CREATE DATABASE nodestoreDB;
 
 USE nodestoreDB;
+
+--  Create, load, and display _products_ table
 
 CREATE TABLE products (
   --  Item ID (a nine-digit number) in the format 123-45-6789, where:
@@ -31,7 +34,15 @@ CREATE TABLE products (
   product_sales   DECIMAL(8,2)    NULL, --  Total sales of product in U. S. $
   PRIMARY KEY (item_id)
   );
+--  LOAD DATA INFILE 'products.csv'
+--    INTO TABLE products
+--    FIELDS TERMINATED BY ','
+--    ENCLOSED BY '"'
+--    LINES TERMINATED BY '\n'
+--    IGNORE 1 ROWS;
 SELECT * FROM products;                 --  Display contents of products table
+
+--  Create, load, and display _departments_ table
 
 CREATE TABLE departments (
   --  Department ID (a three-digit number) = first three digits of the item ID
@@ -41,4 +52,10 @@ CREATE TABLE departments (
   overhead        DECIMAL(8,2)    NULL, --  Total overhead costs for department
   PRIMARY KEY (dept_id)
   );
+--  LOAD DATA INFILE 'departments.csv'
+--    INTO TABLE departments
+--    FIELDS TERMINATED BY ','
+--    ENCLOSED BY '"'
+--    LINES TERMINATED BY '\n'
+--    IGNORE 1 ROWS;
 SELECT * FROM departments               -- Display contents of departments table
