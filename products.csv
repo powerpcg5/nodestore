@@ -1,14 +1,28 @@
-000000000,Power Macintosh G5 1.6-GHz PowerPC 970 (PCI),Computers,1999,10,5,0
-000000001,Power Macintosh G5 1.8-GHz PowerPC 970 (PCI-X),Computers,2399,10,5,0
-000000002,Power Macintosh G5 Dual-processor 2.0-GHz PowerPC 970 (PCI-X),Computers,2999,10,5,0
-000000003,Power Macintosh G5 Dual-processor 1.8-GHz PowerPC 970 (PCI-X),Computers,2499,10,5,0
-000000004,Power Macintosh G5 Dual-processor 1.8-GHz PowerPC 970FX (PCI),Computers,1999,10,5,0
-000000005,Power Macintosh G5 Dual-processor 2.0-GHz PowerPC 970FX (PCI-X),Computers,2499,10,5,0
-000000006,Power Macintosh G5 Dual-processor 2.5-GHz PowerPC 970FX (PCI-X),Computers,2999,10,5,0
-000000007,Power Macintosh G5 1.8-GHz PowerPC 970FX (PCI),Computers,1499,10,5,0
-000000008,Power Macintosh G5 Dual-processor 2.0-GHz PowerPC 970FX (PCI),Computers,1999,10,5,0
-000000009,Power Macintosh G5 Dual-processor 2.3-GHz PowerPC 970FX (PCI-X),Computers,2499,10,5,0
-000000010,Power Macintosh G5 Dual-processor 2.7-GHz PowerPC 970FX (PCI-X),Computers,2999,10,5,0
-000000011,Power Macintosh G5 Dual-core 2.0-GHz PowerPC 970MP (PCI-e),Computers,1999,10,5,0
-000000012,Power Macintosh G5 Dual-core 2.3-GHz PowerPC 970MP (PCI-e),Computers,2499,10,5,0
-000000013,Power Macintosh G5 Quad-core 2.5-GHz PowerPC 970MP (PCI-e),Computers,3299,10,5,0
+000000000,Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI),Computers,1999,10,5,0
+000000001,Apple Power Mac G5 1.8-GHz PowerPC 970 (PCI-X),Computers,2399,10,5,0
+000000002,Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970 (PCI-X),Computers,2999,10,5,0
+000000003,Apple Power Mac G5 Dual-processor 1.8-GHz PowerPC 970 (PCI-X),Computers,2499,10,5,0
+000000004,Apple Power Mac G5 Dual-processor 1.8-GHz PowerPC 970FX (PCI),Computers,1999,10,5,0
+000000005,Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970FX (PCI-X),Computers,2499,10,5,0
+000000006,Apple Power Mac G5 Dual-processor 2.5-GHz PowerPC 970FX (PCI-X),Computers,2999,10,5,0
+000000007,Apple Power Mac G5 1.8-GHz PowerPC 970FX (PCI),Computers,1499,10,5,0
+000000008,Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970FX (PCI),Computers,1999,10,5,0
+000000009,Apple Power Mac G5 Dual-processor 2.3-GHz PowerPC 970FX (PCI-X),Computers,2499,10,5,0
+000000010,Apple Power Mac G5 Dual-processor 2.7-GHz PowerPC 970FX (PCI-X),Computers,2999,10,5,0
+000000011,Apple Power Mac G5 Dual-core 2.0-GHz PowerPC 970MP (PCI-e),Computers,1999,10,5,0
+000000012,Apple Power Mac G5 Dual-core 2.3-GHz PowerPC 970MP (PCI-e),Computers,2499,10,5,0
+000000013,Apple Power Mac G5 Quad-core 2.5-GHz PowerPC 970MP (PCI-e),Computers,3299,10,5,0
+001000000,IBM PowerPC 970 1.8-GHz Processor,Processors,1,10,5,0
+001000001,IBM PowerPC 970 2.0-GHz Processor,Processors,2,10,5,0
+001000002,IBM PowerPC 970FX 1.8-GHz Processor,Processors,4,10,5,0
+001000003,IBM PowerPC 970FX 2.0-GHz Processor,Processors,8,10,5,0
+001000004,IBM PowerPC 970FX 2.3-GHz Processor,Processors,16,10,5,0
+001000005,IBM PowerPC 970FX 2.5-GHz Processor,Processors,32,10,5,0
+001000006,IBM PowerPC 970FX 2.7-GHz Processor,Processors,64,10,5,0
+001000007,IBM PowerPC 970MP Dual-core 2.0-GHz Processor,Processors,128,10,5,0
+001000008,IBM PowerPC 970MP Dual-core 2.3-GHz Processor,Processors,256,10,5,0
+001000009,IBM PowerPC 970MP Dual-core 2.5-GHz Processor,Processors,512,10,5,0
+001000010,Intel Core 2 Quad Q9550 Quad-core 2.83-GHz 12-MB-cache 1333-MHz-FSB Processor,Processors,287,10,5,0
+001000011,Intel Xeon W3540 Quad-core 2.93-GHz 8-MB-cache 4.80-GT/s-QPI Processor,Processors,594,10,5,0
+001000012,Intel Xeon W3570 Quad-core 3.20-GHz 8-MB-cache 6.40-GT/s-QPI Processor,Processors,1059,10,5,0
+001000013,Intel Core i5-520M Dual-core 2.40-GHz 3-MB-cache 2.5-GT/s-DMI Processor,Processors,227,10,5,0
