@@ -1,3 +1,4 @@
+item_id,product,department,price,stock_quantity,low_quantity,product_sales
 000000000,Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI),Computers,1999,10,5,0
 000000001,Apple Power Mac G5 1.8-GHz PowerPC 970 (PCI-X),Computers,2399,10,5,0
 000000002,Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970 (PCI-X),Computers,2999,10,5,0
