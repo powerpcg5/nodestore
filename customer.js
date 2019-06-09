@@ -10,7 +10,7 @@
  // Modified:
  //   2049 Friday, 28 Nisan 5779 (3 May 2019) [EDT] {18019}
  //   0200 Friday, 4 Sivan 5779 (7 June 2019) [EDT] {18054}
- //   2201 Saturday, 5 Sivan 5779 (8 June 2019) [EDT] {18055}
+ //   2252 Saturday, 5 Sivan 5779 (8 June 2019) [EDT] {18055}
  //////////////////////////////////////////////////////////////////////////////
 
  // Require NPM packages
@@ -86,9 +86,9 @@ function purchaseItem() {
                         let sales = quantity * res[i].price
                         connection.query('UPDATE nodestoreDB.products ' +
                         'SET ?, ? WHERE ?', [
-                        { stock_quantity: res[i].stock_quantity - quantity},
-                        { product_sales: res[i].product_sales + sales},
-                        { item_id: itemId}],
+                          {stock_quantity: res[i].stock_quantity - quantity},
+                          {product_sales: res[i].product_sales + sales},
+                          {item_id: itemId}],
                         function(err, res) {
                           if (err) console.log('Failed to update!')
                             else console.log(`You have purchased ${quantity} ` +
