@@ -8,7 +8,7 @@
  // Austin Kim
  //
  // Modified:
- //   0325 Sunday, 6 Sivan (9 June 2019) [EDT] {18056}
+ //   1631 Sunday, 6 Sivan (9 June 2019) [EDT] {18056}
  //////////////////////////////////////////////////////////////////////////////
 
  // Require NPM packages
@@ -171,18 +171,28 @@ function addNewProduct() {
                                   '')))) {
                                   console.log('Invalid item no.')
                                   mainMenu()}
-                                  else connection.query('SELECT product FROM ' +
-                                    'nodestoreDB.products WHERE item_id = ?',
-                                    itemId, function(err, res) {
-                                    if (err) throw err
-                                      else if (res.length === 1) {
-                                        console.log('Item no. ' +
-                                          idFormat(itemId) +
-                                          ' is already on file')
-                                        mainMenu()}
-                                        else createNewProduct(itemId,
-                                          department)
-                                    return})
+                                  else if (Math.floor(itemId / 1000000) !==
+                                    deptId) {
+                                    console.log('Department no. ' +
+                                      Math.floor(itemId /
+                                      1000000).toString().padStart(3, '0') +
+                                      ' of item no. ' + idFormat(itemId) +
+                                      ' does not match selected department ' +
+                                      deptId.toString().padStart(3, '0') + '.')
+                                    mainMenu()}
+                                    else connection.query('SELECT product ' +
+                                      'FROM nodestoreDB.products WHERE ' +
+                                      'item_id = ?', itemId,
+                                      function(err, res) {
+                                      if (err) throw err
+                                        else if (res.length === 1) {
+                                          console.log('Item no. ' +
+                                            idFormat(itemId) +
+                                            ' is already on file')
+                                          mainMenu()}
+                                          else createNewProduct(itemId,
+                                            department)
+                                      return})
                                 return}) // .then(function(inquirerResponse) {
                             } // else
                         return}) // else connection.query('SELECT ...
