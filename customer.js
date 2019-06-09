@@ -1,6 +1,6 @@
  //////////////////////////////////////////////////////////////////////////////
  // nodestore/customer.js
- // Store inventory app using Node.js and MySQL
+ // Store inventory app (customer view) using Node.js and MySQL
  //
  // 0222 Wednesday, 26 Nisan 5779 (1 May 2019) [EDT] {18017}
  //
@@ -11,6 +11,7 @@
  //   2049 Friday, 28 Nisan 5779 (3 May 2019) [EDT] {18019}
  //   0200 Friday, 4 Sivan 5779 (7 June 2019) [EDT] {18054}
  //   2252 Saturday, 5 Sivan 5779 (8 June 2019) [EDT] {18055}
+ //   0324 Sunday, 6 Sivan 5779 (9 June 2019) [EDT] {18056}
  //////////////////////////////////////////////////////////////////////////////
 
  // Require NPM packages
@@ -114,7 +115,7 @@ function mainMenu() {
           break
         case 'Quit':  connection.end()
           }
-      return}) // inquirer.prompt(...
+      return}) // .then(function(inquirerResponse) {
   return}
 
  // MAIN

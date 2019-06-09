@@ -8,7 +8,7 @@
  // Austin Kim
  //
  // Modified:
- //   0309 Sunday, 6 Sivan (9 June 2019) [EDT] {18056}
+ //   0325 Sunday, 6 Sivan (9 June 2019) [EDT] {18056}
  //////////////////////////////////////////////////////////////////////////////
 
  // Require NPM packages
@@ -273,7 +273,7 @@ function mainMenu() {
           break
         case 'Quit':  connection.end()
           }
-      return}) // inquirer.prompt(...
+      return}) // .then(function(inquirerResponse) {
   return}
 
  // MAIN
