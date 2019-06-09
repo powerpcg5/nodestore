@@ -10,6 +10,7 @@
 --  Modified:
 --    2339 Tuesday, 25 Nisan 5779 (30 April 2019) [EDT] {18016}
 --    0154 Wednesday, 26 Nisan 5779 (1 May 2019) [EDT] {18017}
+--    0125 Sunday, 6 Sivan 5779 (9 June 2019) [EDT] {18056}
 -------------------------------------------------------------------------------
 
 DROP DATABASE IF EXISTS nodestoreDB;
@@ -27,11 +28,11 @@ CREATE TABLE products (
   item_id         INTEGER(9)  NOT NULL,
   product         VARCHAR(80)     NULL, --  Product name
   department      VARCHAR(64)     NULL, --  Department name
-  price           DECIMAL(6,2)    NULL, --  Price (cost to customer) in U. S. $
+  price           DECIMAL(8, 2)   NULL, --  Price (cost to customer) in U. S. $
   stock_quantity  INTEGER(6)      NULL, --  Quantity of product in stock
   low_quantity    INTEGER(6)      NULL, --  Minimum quantity needed to keep in
                                         --    stock (below which trigger order)
-  product_sales   DECIMAL(8,2)    NULL, --  Total sales of product in U. S. $
+  product_sales   DECIMAL(10, 2)  NULL, --  Total sales of product in U. S. $
   PRIMARY KEY (item_id)
   );
 --  LOAD DATA INFILE 'products.csv'
@@ -49,7 +50,7 @@ CREATE TABLE departments (
   --    for all items that fall under this department
   dept_id         INTEGER(3)  NOT NULL,
   department      VARCHAR(64)     NULL, --  Department name
-  overhead        DECIMAL(8,2)    NULL, --  Total overhead costs for department
+  overhead        DECIMAL(10, 2)  NULL, --  Total overhead costs for department
   PRIMARY KEY (dept_id)
   );
 --  LOAD DATA INFILE 'departments.csv'
