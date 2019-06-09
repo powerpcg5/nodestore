@@ -8,7 +8,7 @@
  // Austin Kim
  //
  // Modified:
- //   0300 Sunday, 6 Sivan (9 June 2019) [EDT] {18056}
+ //   0309 Sunday, 6 Sivan (9 June 2019) [EDT] {18056}
  //////////////////////////////////////////////////////////////////////////////
 
  // Require NPM packages
@@ -248,7 +248,7 @@ function createNewProduct(itemId, department) {
                                     else console.log('Added new item no. ' +
                                       idFormat(itemId) + ':  ' + product)
                                   mainMenu()
-                                  return}) // else connection.query('INSERT ...
+                                  return}) // function(err, res)
                             return}) // .then(function(inquirerResponse) {
                       return}) // .then(function(inquirerResponse) {
               return}) // .then(function(inquirerResponse) {
