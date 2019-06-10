@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------
---  nodestore/nodestore.sql
---  nodestore.sql for _nodestore_ store inventory app using Node.js and MySQL
+--  nodestore/schema.sql
+--  schema.sql for _nodestore_ store inventory app using Node.js and MySQL
 --
 --  2155 Monday, 24 Nisan 5779 (29 April 2019) [EDT] {18015}
 --
@@ -10,7 +10,7 @@
 --  Modified:
 --    2339 Tuesday, 25 Nisan 5779 (30 April 2019) [EDT] {18016}
 --    0154 Wednesday, 26 Nisan 5779 (1 May 2019) [EDT] {18017}
---    0125 Sunday, 6 Sivan 5779 (9 June 2019) [EDT] {18056}
+--    1959 Sunday, 6 Sivan 5779 (9 June 2019) [EDT] {18056}
 -------------------------------------------------------------------------------
 
 DROP DATABASE IF EXISTS nodestoreDB;
