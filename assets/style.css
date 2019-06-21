@@ -1,0 +1,76 @@
+ /****************************************************************************
+  * nodestore/assets/style.css
+  * CSS stylesheet for Nodestore home page
+  *
+  * 0043--0109 Monday, 7 Sivan 5779 (10 June 2019) [EDT] {18057}
+  *
+  * University of Richmond Coding Boot Camp run by Trilogy Education Services
+  * Austin Kim
+  *
+  * Modified:
+  *   0204 Friday, 18 Sivan 5779 (21 June 2019) [EDT] {18068}
+  ****************************************************************************/
+
+ /* Body */
+body {                  background-color: #f2f2ee;
+                        background-image: url('src-fullview2-light.jpeg');
+                     background-position: top;
+                       background-repeat: repeat-y;
+/* Sticky footer */              display: flex;
+                              min-height: 100vh;
+                          flex-direction: column}
+ /* Nav element */
+.nav-wrapper {                      left: 5%;
+                                   width: 85%}
+ /* Main */
+main {                        margin-top: 10px;
+ /* Sticky footer */                flex: 1 0 auto}
+ /* Container */
+.container {                       width: 80%}
+ /* Rows */
+div.row {                  margin-bottom: 8px}
+
+ /* Block elements */
+h5 {                            position: relative;
+                                    left: -5%;
+                         text-decoration: underline}
+ul {                            position: relative;
+                                    left: 10%}
+ul li {                      text-indent: -5%;
+                               font-size: 112.5%}
+ol {                 list-style-position: outside;
+                                position: relative;
+                                    left: 2.5%}
+ol li {                      text-indent: -5%;
+                            padding-left: 6%;
+                               font-size: 112.5%}
+p.flow-text {                  font-size: 125%}
+pre {                           position: relative;
+                                    left: -10%;
+                               font-size: 112.5%;
+                                   color: green}
+
+ /* Inter-element spacing */
+pre + p {                     margin-top: -3%}
+p + p {                       margin-top: -1%}
+
+ /* Inline elements */
+code {                         font-size: 100%;
+                                   color: green}
+p code {                       font-size: 93.75%}
+
+ /* Simulated terminal output */
+p + div.term {                margin-top: -1ex}
+div.term {              background-color: rgba(0, 0, 0, 0.625)}
+div.term pre {                  position: relative;
+                                    left: 0.5rem;
+                               font-size: 93.75%;
+                                   color: #00ff00}
+div.term pre.red {                 color: #ff0000}
+div.term pre.blue {                color: #0000ff}
+
+ /* Footer */
+footer.page-footer {         padding-top: 0px}
+footer .container {                width: 90%}
+.css-logo {                     position: relative;
+                                  bottom: 7px}
