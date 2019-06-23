@@ -1,6 +1,6 @@
 <!--************************************************************************
     * nodestore/index.html
-    * Nodestore -- A MySQL- and Node.js-based Inventory Management System
+    * Nodestore:  A MySQL- and Node.js-based Inventory Management System
     *
     * 0151 Monday, 7 Sivan 5779 (10 June 2019) [EDT] {18057}
     *
@@ -9,7 +9,7 @@
     *
     * Modified:
     *   0211 Friday, 18 Sivan 5779 (21 June 2019) [EDT] {18068}
-    *   1400 Sunday, 20 Sivan 5779 (23 June 2019) [EDT] {18070}
+    *   1422 Sunday, 20 Sivan 5779 (23 June 2019) [EDT] {18070}
     ************************************************************************-->
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
@@ -141,6 +141,7 @@ href='https://github.com/powerpcg5/nodestore/blob/master/departments.csv'>here</
             (using password: NO)</code> error, check that you have specified
             the correct password in <code>.env</code>, and that
             <code>.env</code> is in the <code>nodestore</code> directory.</p>
+        </div>
         <div class='row'>
           <h5>Examples:&nbsp; Customer mode</h5>
         </div>
@@ -358,7 +359,7 @@ Intel Core i5-520M Dual-core 2.40-GHz 3-MB-cache 2.5-GT/s-DMI Processor
 ? Selection: List low inventory
 -------------------------------Low inventory list-------------------------------
 Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI)
-    000-00-0000:  $1999.00 (4 in stock < 5 minimum quantity)
+    000-00-0000:  $1999.00 (4 in stock &lt; 5 minimum quantity)
 --------------------------------------------------------------------------------
 ? Selection: (Use arrow keys)
 ❯ List items
@@ -376,7 +377,7 @@ Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI)
 ? Selection: Replenish inventory
 ? Item id: 000000000
 Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI)
-    000-00-0000:  $1999.00 (4 in stock < 5 minimum quantity)
+    000-00-0000:  $1999.00 (4 in stock &lt; 5 minimum quantity)
 ? Quantity to add to inventory: 4
 You have added 4 units to bring the inventory up to 8 units.
 ? Selection: List items
@@ -664,7 +665,7 @@ GROUP BY departments.dept_id, departments.department
             <p class='white-text'>Copyright &copy; 2019 Austin Kim under the
               terms of the <a href='https://opensource.org/licenses/MIT/'>MIT
               License</a>.<br
-              />Last modified at 1400 Sunday, 20 Sivan 5779 (23 June 2019)
+              />Last modified at 1422 Sunday, 20 Sivan 5779 (23 June 2019)
               [EDT] {18070}.<br
               />Send errors and broken links to freennix at gmail dot com.</p>
           </div>
