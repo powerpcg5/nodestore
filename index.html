@@ -1,0 +1,687 @@
+<!--************************************************************************
+    * nodestore/index.html
+    * Nodestore -- A MySQL- and Node.js-based Inventory Management System
+    *
+    * 0151 Monday, 7 Sivan 5779 (10 June 2019) [EDT] {18057}
+    *
+    * University of Richmond Coding Boot Camp run by Trilogy Education Services
+    * Austin Kim
+    *
+    * Modified:
+    *   0211 Friday, 18 Sivan 5779 (21 June 2019) [EDT] {18068}
+    *   1400 Sunday, 20 Sivan 5779 (23 June 2019) [EDT] {18070}
+    ************************************************************************-->
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+  <head>
+    <meta charset='utf-8'/>
+    <meta name='viewport'
+      content='width=device-width, initial-scale=1, shrink-to-fit=no'/>
+    <!--Materialize CSS-->
+    <link rel='stylesheet'
+href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'
+      integrity='sha384-5KZdSYqynSzIjQGS2M1O3HW6HVDBjfNx0v5Y2eQuE3vvQ9NTiiPK9/GWc0yYCrgw'
+      crossorigin='anonymous'/>
+    <!--CSS stylesheet-->
+    <link rel='stylesheet' type='text/css' href='assets/style.css'/>
+    <title>Nodestore Home Page</title>
+    <!--IMPORT SCRIPTS-->
+    <!--Materialize-->
+    <script defer
+src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'
+      integrity='sha384-ZOED+d9HxogEQwD+jFvux96iGQR9TxfJO+mPF2ZS0TuKH6eWrmvPsDpO6I0OWdiX'
+      crossorigin='anonymous'></script>
+  </head>
+  <body>
+    <!--Header-->
+    <header>
+      <!--Materialize navigation bar-->
+      <nav>
+        <div class='nav-wrapper'>
+          <a href='https://powerpcg5.github.io/nodestore/'
+            class='brand-logo left'>Nodestore</a>
+          <ul id='nav-mobile' class='right'>
+            <li>
+              <a class='waves-effect waves-light btn'
+                href='https://github.com/powerpcg5/nodestore/'>Go to
+                repository</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!--Main-->
+    <main>
+      <!--Main container-->
+      <div class='container'>
+        <div class='row center-align'>
+          <h4>Nodestore &ndash; A MySQL- and Node.js-based Inventory Management
+            System</h4>
+        </div>
+        <div class='row'>
+          <h5>Synopsis</h5>
+        </div>
+        <div class='row'>
+          <pre>
+            node customer
+            node manager
+            node supervisor
+          </pre>
+          <p class='flow-text'>The following commands are supported:</p>
+          <ul>
+            <li><code>node customer</code>:&nbsp; List items for sale and
+              purchase items.</li>
+            <li><code>node manager</code>:&nbsp; List items for sale, view
+              items with low inventory, add to inventory, and create new items
+              in the system.</li>
+            <li><code>node supervisor</code>:&nbsp; View product sales by
+              department and create new departments.</li>
+          </ul>
+        </div>
+        <div class='row'>
+          <h5>Installation</h5>
+        </div>
+        <div class='row'>
+          <p class='flow-text'>Nodestore requires that you have MySQL installed
+            on your computer (<a
+            href='https://dev.mysql.com/downloads/mysql/'>download
+            MySQL</a>).&nbsp; You will also need to have MySQL Workbench
+            installed in order to import an existing database (<a
+            href='https://dev.mysql.com/downloads/workbench/'>download MySQL
+            Workbench</a>).&nbsp; Once both MySQL and MySQL Workbench are
+            installed and running, to install and set up Nodestore:</p>
+          <ol>
+            <li>In a Terminal (or equivalent) window, clone the Nodestore
+              GitHub repository with:<br
+              /><code>git clone
+              https://github.com/powerpcg5/nodestore.git</code></li>
+            <li><code>cd nodestore</code>;</li>
+            <li><code>vi .env</code>, and append the following lines to the
+              file:<br
+              /><code># MySQL database password</code><br
+              /><code>MYSQL_PASSWORD=</code><cite>yourMySQLpassword</cite></li>
+            <li><code>npm init -y</code>;</li>
+            <li>Install required NPM modules:&nbsp; <code>npm i dotenv mysql
+              inquirer</code> (<del>Note:&nbsp; As of the time of this writing
+              (6/21/2019) the current version of the <code>inquirer</code> NPM
+              package, 6.4.0, causes the console to hang due to nested
+              <code>inquirer.prompt</code> calls; if you encounter this
+              problem, install a previous working version instead,
+              <cite>e.&nbsp;g.</cite>, <code>npm i
+              inquirer@6.3.1</code></del>&nbsp; <em>Fixed in inquirer version
+              6.4.1 of 6/22/2019</em>);</li>
+            <li>Start MySQL Workbench, and connect to the database
+              (<cite>e.&nbsp;g.</cite>, <cite>Database</cite> &rarr;
+              <cite>Connect to Database&hellip;</cite>); </li>
+            <li>Copy the initial schema file <code>schema.sql</code> in the
+              <code>nodestore</code> directory (you can also view the source <a
+href='https://github.com/powerpcg5/nodestore/blob/master/schema.sql'>here</a>),
+              and then paste and run the commands in MySQL Workbench;</li>
+            <li>Import the <code>products.csv</code> file in the
+              <code>nodestore</code> directory (you can also view the source <a
+href='https://github.com/powerpcg5/nodestore/blob/master/products.csv'>here</a>)
+              into the <code>nodestoreDB</code> (<cite>e.&nbsp;g.</cite>, by
+              clicking on the import icon next to <cite>Export/Import:</cite>,
+              selecting <code>products.csv</code>, and following the prompts,
+              with <cite>Use existing table:</cite> set to
+              <cite>nodestoredb.products</cite>); and</li>
+            <li>Finally, import the <code>departments.csv</code> file in the
+              <code>nodestore</code> directory (you can also view the source <a
+href='https://github.com/powerpcg5/nodestore/blob/master/departments.csv'>here</a>)
+              into the <code>nodestoreDB</code> (<cite>e.&nbsp;g.</cite>, by
+              clicking on the import icon next to <cite>Export/Import:</cite>,
+              selecting <code>departments.csv</code>, and following the
+              prompts, with <cite>Use existing table:</cite> set to
+              <cite>nodestoredb.departments</cite>).</li>
+          </ol>
+          <p class='flow-text'>You should now be able to use run <code>node
+            customer</code>, <code>node manager</code>, or <code>node
+            supervisor</code>.&nbsp; If you get an <code>Error:
+            ER_ACCESS_DENIED_ERROR: Access denied for user 'root'@'localhost'
+            (using password: NO)</code> error, check that you have specified
+            the correct password in <code>.env</code>, and that
+            <code>.env</code> is in the <code>nodestore</code> directory.</p>
+        <div class='row'>
+          <h5>Examples:&nbsp; Customer mode</h5>
+        </div>
+        <div class='row'>
+          <p class='flow-text'>Customer mode:</p>
+          <div class='term'>
+<pre>
+ak@mac:~/Desktop/nodestore$ node customer
+nodestore: Connected as id 14
+---------------------------WELCOME TO THE NODE STORE----------------------------
+? Selection: (Use arrow keys)
+❯ List items
+  Purchase item
+  Quit
+</pre>
+          </div>
+          <p class='flow-text'>Selecting <code>List items</code>:</p>
+          <div class='term'>
+<pre>
+? Selection: List items
+----------------------------------Product list----------------------------------
+Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI)
+    000-00-0000:  $1999.00 (10 in stock)
+Apple Power Mac G5 1.8-GHz PowerPC 970 (PCI-X)
+    000-00-0001:  $2399.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970 (PCI-X)
+    000-00-0002:  $2999.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 1.8-GHz PowerPC 970 (PCI-X)
+    000-00-0003:  $2499.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 1.8-GHz PowerPC 970FX (PCI)
+    000-00-0004:  $1999.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970FX (PCI-X)
+    000-00-0005:  $2499.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.5-GHz PowerPC 970FX (PCI-X)
+    000-00-0006:  $2999.00 (10 in stock)
+Apple Power Mac G5 1.8-GHz PowerPC 970FX (PCI)
+    000-00-0007:  $1499.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970FX (PCI)
+    000-00-0008:  $1999.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.3-GHz PowerPC 970FX (PCI-X)
+    000-00-0009:  $2499.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.7-GHz PowerPC 970FX (PCI-X)
+    000-00-0010:  $2999.00 (10 in stock)
+Apple Power Mac G5 Dual-core 2.0-GHz PowerPC 970MP (PCI-e)
+    000-00-0011:  $1999.00 (10 in stock)
+Apple Power Mac G5 Dual-core 2.3-GHz PowerPC 970MP (PCI-e)
+    000-00-0012:  $2499.00 (10 in stock)
+Apple Power Mac G5 Quad-core 2.5-GHz PowerPC 970MP (PCI-e)
+    000-00-0013:  $3299.00 (10 in stock)
+IBM PowerPC 970 1.8-GHz Processor
+    001-00-0000:  $1.00 (10 in stock)
+IBM PowerPC 970 2.0-GHz Processor
+    001-00-0001:  $2.00 (10 in stock)
+IBM PowerPC 970FX 1.8-GHz Processor
+    001-00-0002:  $4.00 (10 in stock)
+IBM PowerPC 970FX 2.0-GHz Processor
+    001-00-0003:  $8.00 (10 in stock)
+IBM PowerPC 970FX 2.3-GHz Processor
+    001-00-0004:  $16.00 (10 in stock)
+IBM PowerPC 970FX 2.5-GHz Processor
+    001-00-0005:  $32.00 (10 in stock)
+IBM PowerPC 970FX 2.7-GHz Processor
+    001-00-0006:  $64.00 (10 in stock)
+IBM PowerPC 970MP Dual-core 2.0-GHz Processor
+    001-00-0007:  $128.00 (10 in stock)
+IBM PowerPC 970MP Dual-core 2.3-GHz Processor
+    001-00-0008:  $256.00 (10 in stock)
+IBM PowerPC 970MP Dual-core 2.5-GHz Processor
+    001-00-0009:  $512.00 (10 in stock)
+Intel Core 2 Quad Q9550 Quad-core 2.83-GHz 12-MB-cache 1333-MHz-FSB Processor
+    001-00-0010:  $287.00 (10 in stock)
+Intel Xeon W3540 Quad-core 2.93-GHz 8-MB-cache 4.80-GT/s-QPI Processor
+    001-00-0011:  $594.00 (10 in stock)
+Intel Xeon W3570 Quad-core 3.20-GHz 8-MB-cache 6.40-GT/s-QPI Processor
+    001-00-0012:  $1059.00 (10 in stock)
+Intel Core i5-520M Dual-core 2.40-GHz 3-MB-cache 2.5-GT/s-DMI Processor
+    001-00-0013:  $227.00 (10 in stock)
+--------------------------------------------------------------------------------
+? Selection: (Use arrow keys)
+❯ List items
+  Purchase item
+  Quit
+</pre>
+          </div>
+          <p class='flow-text'>Example of using <code>Purchase item</code>:</p>
+          <div class='term'>
+<pre>
+? Selection: Purchase item
+? Item id: 000-00-000
+Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI)
+    000-00-0000:  $1999.00 (10 in stock)
+? Quantity to purchase: 1
+You have purchased 1 unit for a total of $1999.00
+? Selection: Purchase item
+? Item id: 0
+Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI)
+    000-00-0000:  $1999.00 (9 in stock)
+? Quantity to purchase: 5
+You have purchased 5 units for a total of $9995.00
+? Selection: List items
+----------------------------------Product list----------------------------------
+Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI)
+    000-00-0000:  $1999.00 (4 in stock)
+</pre>
+          </div>
+          <p class='flow-text'>Example of attempting to purchase more of an
+            item than is in stock:</p>
+          <div class='term'>
+<pre>
+? Selection: Purchase item
+? Item id: 0
+Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI)
+    000-00-0000:  $1999.00 (4 in stock)
+? Quantity to purchase: 5
+Insufficient quantity!
+? Selection: Quit
+ak@mac:~/Desktop/nodestore$
+</pre>
+          </div>
+        </div>
+        <div class='row'>
+          <h5>Examples:&nbsp; Manager mode</h5>
+        </div>
+        <div class='row'>
+          <p class='flow-text'>Manager mode:</p>
+          <div class='term'>
+<pre>
+ak@mac:~/Desktop/nodestore$ n manager
+nodestore: Connected as id 13
+--------------------WELCOME TO THE NODE STORE (MANAGER VIEW)--------------------
+? Selection: (Use arrow keys)
+❯ List items
+  List low inventory
+  Replenish inventory
+  Add new product
+  Quit
+</pre>
+          </div>
+          <p class='flow-text'>Selecting <code>List items</code> does the same
+            thing as in customer mode:</p>
+          <div class='term'>
+<pre>
+? Selection: List items
+----------------------------------Product list----------------------------------
+Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI)
+    000-00-0000:  $1999.00 (4 in stock)
+Apple Power Mac G5 1.8-GHz PowerPC 970 (PCI-X)
+    000-00-0001:  $2399.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970 (PCI-X)
+    000-00-0002:  $2999.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 1.8-GHz PowerPC 970 (PCI-X)
+    000-00-0003:  $2499.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 1.8-GHz PowerPC 970FX (PCI)
+    000-00-0004:  $1999.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970FX (PCI-X)
+    000-00-0005:  $2499.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.5-GHz PowerPC 970FX (PCI-X)
+    000-00-0006:  $2999.00 (10 in stock)
+Apple Power Mac G5 1.8-GHz PowerPC 970FX (PCI)
+    000-00-0007:  $1499.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970FX (PCI)
+    000-00-0008:  $1999.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.3-GHz PowerPC 970FX (PCI-X)
+    000-00-0009:  $2499.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.7-GHz PowerPC 970FX (PCI-X)
+    000-00-0010:  $2999.00 (10 in stock)
+Apple Power Mac G5 Dual-core 2.0-GHz PowerPC 970MP (PCI-e)
+    000-00-0011:  $1999.00 (10 in stock)
+Apple Power Mac G5 Dual-core 2.3-GHz PowerPC 970MP (PCI-e)
+    000-00-0012:  $2499.00 (10 in stock)
+Apple Power Mac G5 Quad-core 2.5-GHz PowerPC 970MP (PCI-e)
+    000-00-0013:  $3299.00 (10 in stock)
+IBM PowerPC 970 1.8-GHz Processor
+    001-00-0000:  $1.00 (10 in stock)
+IBM PowerPC 970 2.0-GHz Processor
+    001-00-0001:  $2.00 (10 in stock)
+IBM PowerPC 970FX 1.8-GHz Processor
+    001-00-0002:  $4.00 (10 in stock)
+IBM PowerPC 970FX 2.0-GHz Processor
+    001-00-0003:  $8.00 (10 in stock)
+IBM PowerPC 970FX 2.3-GHz Processor
+    001-00-0004:  $16.00 (10 in stock)
+IBM PowerPC 970FX 2.5-GHz Processor
+    001-00-0005:  $32.00 (10 in stock)
+IBM PowerPC 970FX 2.7-GHz Processor
+    001-00-0006:  $64.00 (10 in stock)
+IBM PowerPC 970MP Dual-core 2.0-GHz Processor
+    001-00-0007:  $128.00 (10 in stock)
+IBM PowerPC 970MP Dual-core 2.3-GHz Processor
+    001-00-0008:  $256.00 (10 in stock)
+IBM PowerPC 970MP Dual-core 2.5-GHz Processor
+    001-00-0009:  $512.00 (10 in stock)
+Intel Core 2 Quad Q9550 Quad-core 2.83-GHz 12-MB-cache 1333-MHz-FSB Processor
+    001-00-0010:  $287.00 (10 in stock)
+Intel Xeon W3540 Quad-core 2.93-GHz 8-MB-cache 4.80-GT/s-QPI Processor
+    001-00-0011:  $594.00 (10 in stock)
+Intel Xeon W3570 Quad-core 3.20-GHz 8-MB-cache 6.40-GT/s-QPI Processor
+    001-00-0012:  $1059.00 (10 in stock)
+Intel Core i5-520M Dual-core 2.40-GHz 3-MB-cache 2.5-GT/s-DMI Processor
+    001-00-0013:  $227.00 (10 in stock)
+--------------------------------------------------------------------------------
+? Selection: (Use arrow keys)
+❯ List items
+  List low inventory
+  Replenish inventory
+  Add new product
+  Quit
+</pre>
+          </div>
+          <p class='flow-text'>Selecting <code>List low inventory</code> lists
+            all items whose in-stock quantities are below the minimum
+            thresholds (which are maintained per-item):</p>
+          <div class='term'>
+<pre>
+? Selection: List low inventory
+-------------------------------Low inventory list-------------------------------
+Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI)
+    000-00-0000:  $1999.00 (4 in stock < 5 minimum quantity)
+--------------------------------------------------------------------------------
+? Selection: (Use arrow keys)
+❯ List items
+  List low inventory
+  Replenish inventory
+  Add new product
+  Quit
+</pre>
+          </div>
+          <p class='flow-text'><code>Replenish inventory</code> allows a
+            manager to increase the in-stock count of an item
+            (<em>i.&nbsp;e.</em>, when more of an item has come in):</p>
+          <div class='term'>
+<pre>
+? Selection: Replenish inventory
+? Item id: 000000000
+Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI)
+    000-00-0000:  $1999.00 (4 in stock < 5 minimum quantity)
+? Quantity to add to inventory: 4
+You have added 4 units to bring the inventory up to 8 units.
+? Selection: List items
+----------------------------------Product list----------------------------------
+Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI)
+    000-00-0000:  $1999.00 (8 in stock)
+</pre>
+          </div>
+          <p class='flow-text'><code>Add new product</code> allows a manager to
+            add a new product to Nodestore:</p>
+          <div class='term'>
+<pre>
+? Selection: Add new product
+--------------------------------Department list---------------------------------
+000-xx-xxxx:  Computers
+001-xx-xxxx:  Processors
+--------------------------------------------------------------------------------
+? Department id (000--999): 0
+--------------------------Department 000 product list---------------------------
+000-00-0000:  Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI)
+000-00-0001:  Apple Power Mac G5 1.8-GHz PowerPC 970 (PCI-X)
+000-00-0002:  Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970 (PCI-X)
+000-00-0003:  Apple Power Mac G5 Dual-processor 1.8-GHz PowerPC 970 (PCI-X)
+000-00-0004:  Apple Power Mac G5 Dual-processor 1.8-GHz PowerPC 970FX (PCI)
+000-00-0005:  Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970FX (PCI-X)
+000-00-0006:  Apple Power Mac G5 Dual-processor 2.5-GHz PowerPC 970FX (PCI-X)
+000-00-0007:  Apple Power Mac G5 1.8-GHz PowerPC 970FX (PCI)
+000-00-0008:  Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970FX (PCI)
+000-00-0009:  Apple Power Mac G5 Dual-processor 2.3-GHz PowerPC 970FX (PCI-X)
+000-00-0010:  Apple Power Mac G5 Dual-processor 2.7-GHz PowerPC 970FX (PCI-X)
+000-00-0011:  Apple Power Mac G5 Dual-core 2.0-GHz PowerPC 970MP (PCI-e)
+000-00-0012:  Apple Power Mac G5 Dual-core 2.3-GHz PowerPC 970MP (PCI-e)
+000-00-0013:  Apple Power Mac G5 Quad-core 2.5-GHz PowerPC 970MP (PCI-e)
+--------------------------------------------------------------------------------
+? Item no. (ddd-cc-iiii) to add: 13
+Item no. 000-00-0013 is already on file
+? Selection: Add new product
+--------------------------------Department list---------------------------------
+000-xx-xxxx:  Computers
+001-xx-xxxx:  Processors
+--------------------------------------------------------------------------------
+? Department id (000--999): 0
+--------------------------Department 000 product list---------------------------
+000-00-0000:  Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI)
+000-00-0001:  Apple Power Mac G5 1.8-GHz PowerPC 970 (PCI-X)
+000-00-0002:  Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970 (PCI-X)
+000-00-0003:  Apple Power Mac G5 Dual-processor 1.8-GHz PowerPC 970 (PCI-X)
+000-00-0004:  Apple Power Mac G5 Dual-processor 1.8-GHz PowerPC 970FX (PCI)
+000-00-0005:  Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970FX (PCI-X)
+000-00-0006:  Apple Power Mac G5 Dual-processor 2.5-GHz PowerPC 970FX (PCI-X)
+000-00-0007:  Apple Power Mac G5 1.8-GHz PowerPC 970FX (PCI)
+000-00-0008:  Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970FX (PCI)
+000-00-0009:  Apple Power Mac G5 Dual-processor 2.3-GHz PowerPC 970FX (PCI-X)
+000-00-0010:  Apple Power Mac G5 Dual-processor 2.7-GHz PowerPC 970FX (PCI-X)
+000-00-0011:  Apple Power Mac G5 Dual-core 2.0-GHz PowerPC 970MP (PCI-e)
+000-00-0012:  Apple Power Mac G5 Dual-core 2.3-GHz PowerPC 970MP (PCI-e)
+000-00-0013:  Apple Power Mac G5 Quad-core 2.5-GHz PowerPC 970MP (PCI-e)
+--------------------------------------------------------------------------------
+? Item no. (ddd-cc-iiii) to add: 14
+? Product name/description: Apple IIGS 2.5-MHz G65SC816 (Apple II 8-bit bus)
+? Price: $ 999
+? Stock quantity: 4
+? Minimum quantity: 5
+Added new item no. 000-00-0014:  Apple IIGS 2.5-MHz G65SC816 (Apple II 8-bit bus)
+? Selection: List items
+----------------------------------Product list----------------------------------
+Apple Power Mac G5 1.6-GHz PowerPC 970 (PCI)
+    000-00-0000:  $1999.00 (8 in stock)
+Apple Power Mac G5 1.8-GHz PowerPC 970 (PCI-X)
+    000-00-0001:  $2399.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970 (PCI-X)
+    000-00-0002:  $2999.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 1.8-GHz PowerPC 970 (PCI-X)
+    000-00-0003:  $2499.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 1.8-GHz PowerPC 970FX (PCI)
+    000-00-0004:  $1999.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970FX (PCI-X)
+    000-00-0005:  $2499.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.5-GHz PowerPC 970FX (PCI-X)
+    000-00-0006:  $2999.00 (10 in stock)
+Apple Power Mac G5 1.8-GHz PowerPC 970FX (PCI)
+    000-00-0007:  $1499.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.0-GHz PowerPC 970FX (PCI)
+    000-00-0008:  $1999.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.3-GHz PowerPC 970FX (PCI-X)
+    000-00-0009:  $2499.00 (10 in stock)
+Apple Power Mac G5 Dual-processor 2.7-GHz PowerPC 970FX (PCI-X)
+    000-00-0010:  $2999.00 (10 in stock)
+Apple Power Mac G5 Dual-core 2.0-GHz PowerPC 970MP (PCI-e)
+    000-00-0011:  $1999.00 (10 in stock)
+Apple Power Mac G5 Dual-core 2.3-GHz PowerPC 970MP (PCI-e)
+    000-00-0012:  $2499.00 (10 in stock)
+Apple Power Mac G5 Quad-core 2.5-GHz PowerPC 970MP (PCI-e)
+    000-00-0013:  $3299.00 (10 in stock)
+Apple IIGS 2.5-MHz G65SC816 (Apple II 8-bit bus)
+    000-00-0014:  $999.00 (4 in stock)
+IBM PowerPC 970 1.8-GHz Processor
+    001-00-0000:  $1.00 (10 in stock)
+IBM PowerPC 970 2.0-GHz Processor
+    001-00-0001:  $2.00 (10 in stock)
+IBM PowerPC 970FX 1.8-GHz Processor
+    001-00-0002:  $4.00 (10 in stock)
+IBM PowerPC 970FX 2.0-GHz Processor
+    001-00-0003:  $8.00 (10 in stock)
+IBM PowerPC 970FX 2.3-GHz Processor
+    001-00-0004:  $16.00 (10 in stock)
+IBM PowerPC 970FX 2.5-GHz Processor
+    001-00-0005:  $32.00 (10 in stock)
+IBM PowerPC 970FX 2.7-GHz Processor
+    001-00-0006:  $64.00 (10 in stock)
+IBM PowerPC 970MP Dual-core 2.0-GHz Processor
+    001-00-0007:  $128.00 (10 in stock)
+IBM PowerPC 970MP Dual-core 2.3-GHz Processor
+    001-00-0008:  $256.00 (10 in stock)
+IBM PowerPC 970MP Dual-core 2.5-GHz Processor
+    001-00-0009:  $512.00 (10 in stock)
+Intel Core 2 Quad Q9550 Quad-core 2.83-GHz 12-MB-cache 1333-MHz-FSB Processor
+    001-00-0010:  $287.00 (10 in stock)
+Intel Xeon W3540 Quad-core 2.93-GHz 8-MB-cache 4.80-GT/s-QPI Processor
+    001-00-0011:  $594.00 (10 in stock)
+Intel Xeon W3570 Quad-core 3.20-GHz 8-MB-cache 6.40-GT/s-QPI Processor
+    001-00-0012:  $1059.00 (10 in stock)
+Intel Core i5-520M Dual-core 2.40-GHz 3-MB-cache 2.5-GT/s-DMI Processor
+    001-00-0013:  $227.00 (10 in stock)
+--------------------------------------------------------------------------------
+? Selection: Quit
+ak@mac:~/Desktop/nodestore$
+</pre>
+          </div>
+        </div>
+        <div class='row'>
+          <h5>Examples:&nbsp; Supervisor mode</h5>
+        </div>
+        <div class='row'>
+          <p class='flow-text'>Supervisor mode:</p>
+          <div class='term'>
+<pre>
+ak@mac:~/Desktop/nodestore$ n supervisor
+nodestore: Connected as id 14
+------------------WELCOME TO THE NODE STORE (SUPERVISOR VIEW)-------------------
+? Selection: (Use arrow keys)
+❯ View sales by department
+  Create new department
+  Quit
+</pre>
+          </div>
+          <p class='flow-text'><code>View sales by department</code> lists
+            total sales, department overhead, and net profit for each
+            department:</p>
+          <div class='term'>
+<pre>
+? Selection: View sales by department
+	Dept_id Department Product_sales Overhead  Net_profit
+	------- ---------- ------------- --------- ----------
+	000     Computers      $11994.00 $10000.00   $1994.00
+	001     Processors         $0.00  $5000.00  -$5000.00
+? Selection: (Use arrow keys)
+❯ View sales by department
+  Create new department
+  Quit
+</pre>
+          </div>
+          <p class='flow-text'>Finally, <code>Create new department</code>
+            allows a supervisor to create a new department, similar to the way
+            <code>Add new product</code> allowed a manager to add a new product
+            in the manager-mode app:</p>
+          <div class='term'>
+<pre>
+? Selection: Create new department
+--------------------------------Department list---------------------------------
+000:  Computers
+001:  Processors
+--------------------------------------------------------------------------------
+? Department id (000--999): 1
+Department 001 is already on file.
+? Selection: Create new department
+--------------------------------Department list---------------------------------
+000:  Computers
+001:  Processors
+--------------------------------------------------------------------------------
+? Department id (000--999): 2
+? Department name: Printers
+? Department overhead: $ 2500
+Added new department no. 002:  Printers
+? Selection: Quit
+ak@mac:~/Desktop/nodestore$
+</pre>
+          </div>
+          <p class='flow-text'>The manager-mode app can then be used to add a
+            new product to this newly created department:</p>
+          <div class='term'>
+<pre>
+ak@mac:~/Desktop/nodestore$ n manager
+nodestore: Connected as id 15
+--------------------WELCOME TO THE NODE STORE (MANAGER VIEW)--------------------
+? Selection: Add new product
+--------------------------------Department list---------------------------------
+000-xx-xxxx:  Computers
+001-xx-xxxx:  Processors
+002-xx-xxxx:  Printers
+--------------------------------------------------------------------------------
+? Department id (000--999): 2
+--------------------------Department 002 product list---------------------------
+--------------------------------------------------------------------------------
+? Item no. (ddd-cc-iiii) to add: 002-00-0000
+? Product name/description: Apple ImageWriter II
+? Price: $ 499
+? Stock quantity: 10
+? Minimum quantity: 5
+Added new item no. 002-00-0000:  Apple ImageWriter II
+? Selection: Quit
+ak@mac:~/Desktop/nodestore$
+</pre>
+          </div>
+          <p class='flow-text'>The customer-mode app can then be used to sell
+            the newly created item in the new department, as usual:</p>
+          <div class='term'>
+<pre>
+ak@mac:~/Desktop/nodestore$ n customer
+nodestore: Connected as id 17
+---------------------------WELCOME TO THE NODE STORE----------------------------
+? Selection: Purchase item
+? Item id: 002-00-0000
+Apple ImageWriter II
+    002-00-0000:  $499.00 (10 in stock)
+? Quantity to purchase: 4
+You have purchased 4 units for a total of $1996.00
+? Selection: Quit
+ak@mac:~/Desktop/nodestore$
+</pre>
+          </div>
+          <p class='flow-text'>Finally, the supervisor-mode app will now
+            reflect the new sales:</p>
+          <div class='term'>
+<pre>
+ak@mac:~/Desktop/nodestore$ n supervisor
+nodestore: Connected as id 18
+------------------WELCOME TO THE NODE STORE (SUPERVISOR VIEW)-------------------
+? Selection: View sales by department
+	Dept_id Department Product_sales Overhead  Net_profit
+	------- ---------- ------------- --------- ----------
+	000     Computers      $11994.00 $10000.00   $1994.00
+	001     Processors         $0.00  $5000.00  -$5000.00
+	002     Printers        $1996.00  $2500.00   -$504.00
+? Selection: Quit
+ak@mac:~/Desktop/nodestore$
+</pre>
+          </div>
+        </div>
+        <div class='row'>
+          <h5>Notes</h5>
+        </div>
+        <div class='row'>
+          <p class='flow-text'>The most involved MySQL query required for this
+            application was that used to view the aggregate sales by
+            department, which involved joining the product database and the
+            department database on the department key; the overall query looked
+            like the following:</p>
+          <div class='term'>
+<pre>
+USE nodestoreDB;
+SELECT departments.dept_id, departments.department,
+  SUM(products.product_sales) AS total_sales, departments.overhead,
+  SUM(products.product_sales) - departments.overhead AS net_total_sales
+FROM products
+INNER JOIN departments
+ON products.department = departments.department
+GROUP BY departments.dept_id, departments.department
+</pre>
+          </div>
+          <p class='flow-text'>The name <cite>Nodestore</cite> was inspired by
+            the &lsquo;Apple Store&rsquo; and is a nod to its being powered by
+            <a href='https://nodejs.org/en/'>Node.js</a>.&nbsp; The
+            &lsquo;-<cite>store</cite>&rsquo; part of the name is a reference
+            to the data store (storage), which is handled by <a
+            href='https://www.mysql.com'>MySQL</a>.</p>
+        </div>
+      </div>
+    </main>
+    <!--Footer-->
+    <footer class='page-footer'>
+      <div class='container'>
+        <div class='row valign-wrapper'>
+          <div class='col s8'>
+            <p class='white-text'>Copyright &copy; 2019 Austin Kim under the
+              terms of the <a href='https://opensource.org/licenses/MIT/'>MIT
+              License</a>.<br
+              />Last modified at 1400 Sunday, 20 Sivan 5779 (23 June 2019)
+              [EDT] {18070}.<br
+              />Send errors and broken links to freennix at gmail dot com.</p>
+          </div>
+          <div class='col s4 right-align'>
+            <a href='https://validator.w3.org/check?uri=referer'><img
+              class='tooltipped' data-position='top'
+              data-tooltip='Valid HTML 5!'
+              src='https://www.w3.org/QA/Tools/I_heart_validator_lg.png'
+              alt='Valid HTML 5!'/></a>
+            <a href='https://jigsaw.w3.org/css-validator/check?uri=referer'><img
+              class='tooltipped css-logo' data-position='top'
+              data-tooltip='Valid CSS level 3!'
+              src='https://jigsaw.w3.org/css-validator/images/vcss.png'
+              alt='Valid CSS level 3!'/></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
